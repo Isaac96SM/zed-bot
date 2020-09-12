@@ -5,7 +5,8 @@
   "main": "dist/app.js",
   "scripts": {
     "start": "tsc && node dist/app.js",
-    "heroku-postbuild": "tsc"
+    "tsc": "tsc",
+    "postinstall": "npm run tsc"
   },
   "author": "",
   "license": "ISC",
