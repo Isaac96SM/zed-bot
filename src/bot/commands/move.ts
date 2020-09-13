@@ -2,7 +2,7 @@ import { Message, VoiceChannel } from "discord.js"
 
 import { isUserInVoice, hasPermission, getVoiceChannel } from "../functions"
 
-export const move = (message: Message, destination: string) => {
+export const move = async (message: Message, destination: string) => {
 	if (!isUserInVoice(message.member)) {
 		message.channel.send('You are not connected to any voice channel');
 		return;
@@ -27,10 +27,9 @@ export const move = (message: Message, destination: string) => {
 		return;
 	}
 
-	message.client.channels.fetch(destinationChannel.id)
-		.then(newChannel => {
-			currentChannel.members.forEach(member => member.voice.setChannel(newChannel));
+	const newChannel = await message.client.channels.fetch(destinationChannel.id);
 
-			message.channel.send(`Moved to ${(newChannel as VoiceChannel).name}`);
-		});
+	currentChannel.members.forEach(member => member.voice.setChannel(newChannel));
+
+	message.channel.send(`Moved to ${(newChannel as VoiceChannel).name}`);
 }

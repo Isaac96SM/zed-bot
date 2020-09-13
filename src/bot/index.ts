@@ -1,6 +1,8 @@
-import { Client } from "discord.js";
+import { Client } from "discord.js"
 
+import { JobInterval } from "./constants"
 import { onMessage } from "./events"
+import { pruneUsers } from "./jobs"
 
 export default class Bot {
 	private client: Client
@@ -19,6 +21,7 @@ export default class Bot {
 
 	private initEvents() {
 		this.client.on("message", onMessage);
+		this.client.setInterval(pruneUsers.bind(this.client), JobInterval);
 	}
 
 	private login() {
