@@ -18,7 +18,10 @@ export const onMessage = (message: Message) => {
 			Commands.unMute(message);
 			break;
 		case Command.Move:
-			Commands.move(message, args[0])
+			Commands.move(message, args[0]);
+			break;
+		case Command.Help:
+			Commands.help(message);
 			break;
 		default:
 			message.channel.send('Unknown command');

@@ -1,5 +1,6 @@
 export enum Command {
 	Mute = "mute",
 	Unmute = "unmute",
-	Move = "move"
+	Move = "move",
+	Help = "help"
 }
