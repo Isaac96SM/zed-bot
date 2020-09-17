@@ -13,7 +13,7 @@ export const help = (message: Message) => {
 			.setTitle('UNMUTE')
 			.setColor(0xCF40FA)
 			.setDescription('Unmute all the users in the voice channel where you are (self-included)')
-			.addField('Syntax', '-mute'),
+			.addField('Syntax', '-unmute'),
 		new MessageEmbed()
 			.setTitle('MOVE')
 			.setColor(0xCF40FA)
