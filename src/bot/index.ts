@@ -5,8 +5,10 @@ import { onMessage } from "./events"
 import { pruneUsers } from "./jobs"
 
 export default class Bot {
-	private client: Client
-	private key: string
+	public client: Client
+    private key: string
+    
+    public lastExecution: Date = null;
 
 	constructor(key: string) {
 		this.client = new Client();
@@ -21,7 +23,7 @@ export default class Bot {
 
 	private initEvents() {
 		this.client.on("message", onMessage);
-		this.client.setInterval(pruneUsers.bind(this.client), JobInterval);
+		this.client.setInterval(pruneUsers.bind(this), JobInterval);
 	}
 
 	private login() {

@@ -1,23 +1,43 @@
-import { Client, TextChannel } from "discord.js"
+import { TextChannel } from "discord.js"
+import Bot from "..";
 
 import { SERVER_ID } from "../../config"
 
 import { getTextChannel } from "../functions"
 import { PruneMessage } from "../models"
 
-export async function pruneUsers(this: Client) {
-	const server = await this.guilds.fetch(SERVER_ID);
+export async function pruneUsers(this: Bot) {
+    const now = new Date();
 
-	const members = await server.members.fetch();
+    // Is not Friday or already executed today
+    if (now.getDay() !== 4 || !!this.lastExecution)
+        return console.log("No execute");
 
-	const membersToKick = members.filter(m => m.roles.cache.size === 1);
+    try {
+        console.log("Start prune");
 
-	if (membersToKick.size > 0) {
-		const message = new PruneMessage(membersToKick);
-		const zedChannel = await this.channels.fetch(getTextChannel('zed').id) as TextChannel;
+        const server = await this.client.guilds.fetch(SERVER_ID);
 
-		await Promise.all(membersToKick.map(m => m.kick()));
+        const members = await server.members.fetch();
 
-		zedChannel.send({ embed: message.message });
-	}
+        const membersToKick = members.filter(m => m.roles.cache.size === 1);
+
+        if (membersToKick.size > 0) {
+            const message = new PruneMessage(membersToKick);
+            const zedChannel = await this.client.channels.fetch(getTextChannel('zed').id) as TextChannel;
+
+            await Promise.all(membersToKick.map(m => m.kick()));
+
+            zedChannel.send({ embed: message.message });
+        }
+
+        this.lastExecution = now;
+        
+        console.log(`Finish prune at ${this.lastExecution}. users pruned: ${membersToKick.size}`);
+
+    } catch (err) {
+        const ex: Error = err;
+
+        console.log(`Prune users failed: ${ex.message}`);
+    }
 }

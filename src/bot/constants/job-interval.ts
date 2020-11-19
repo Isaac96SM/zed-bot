@@ -1,4 +1,4 @@
 const minute: number = 60000;
-const day: number = minute * 60 * 24;
+const hour: number = minute * 60;
 
-export const JobInterval: number = day * 7;
+export const JobInterval: number = hour * 12;
