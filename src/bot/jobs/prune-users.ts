@@ -10,7 +10,7 @@ export async function pruneUsers(this: Bot) {
     const now = new Date();
 
     // Is not Friday or already executed today
-    if (now.getDay() !== 4 || !!this.lastExecution)
+    if (now.getDay() !== 5 || !!this.lastExecution)
         return console.log("No execute");
 
     try {

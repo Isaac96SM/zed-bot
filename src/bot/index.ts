@@ -1,4 +1,4 @@
-import { Client } from "discord.js"
+import { Client, Intents } from "discord.js"
 
 import { JobInterval } from "./constants"
 import { onMessage } from "./events"
@@ -11,7 +11,12 @@ export default class Bot {
     public lastExecution: Date = null;
 
 	constructor(key: string) {
-		this.client = new Client();
+        const intents: Intents = new Intents([
+            Intents.NON_PRIVILEGED,
+            "GUILD_MEMBERS"
+        ]);
+
+		this.client = new Client({ ws: { intents } });
 		this.key = key;
 	}
 
