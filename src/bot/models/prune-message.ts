@@ -1,12 +1,12 @@
-import { Collection, GuildMember, MessageEmbed } from "discord.js"
+import { Collection, GuildEmoji, GuildMember, MessageEmbed } from "discord.js"
 
 export class PruneMessage {
 	public message: MessageEmbed
 
-	constructor(members: Collection<string, GuildMember>) {
+	constructor(members: Collection<string, GuildMember>, emoji: GuildEmoji) {
 		this.message = new MessageEmbed();
 
-		this.message.title = 'CONTEMPT FOR THE WEAK';
+		this.message.title = `${emoji} CONTEMPT FOR THE WEAK ${emoji}`;
 		this.message.description = 'The following users have been kicked from the server for membership reasons:';
 		this.message.url = 'https://euw.leagueoflegends.com/es-es/champions/zed/';
 		this.message.color = 15746887;
