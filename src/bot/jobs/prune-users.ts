@@ -28,9 +28,9 @@ export async function pruneUsers(this: Bot) {
 
             const zedChannel = await this.client.channels.fetch(getTextChannel('zed').id) as TextChannel;
 
-            //await Promise.all(membersToKick.map(m => m.kick()));
+            await Promise.all(membersToKick.map(m => m.kick()));
 
-            //zedChannel.send({ embed: message.message });
+            zedChannel.send({ embed: message.message });
         }
 
         this.lastExecution = now;
