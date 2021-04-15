@@ -18,7 +18,7 @@ export async function pruneUsers(this: Bot) {
 
 		console.log("0");
 
-		const server = await this.client.guilds.fetch(SERVER_ID);
+		const server = await this.client.guilds.cache.get(SERVER_ID);
 		
 		console.log("1");
 
