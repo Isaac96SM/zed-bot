@@ -1,9 +1,9 @@
-import { Collection, GuildEmoji, GuildMember, MessageEmbed } from "discord.js"
+import { Collection, GuildMember, MessageEmbed } from "discord.js"
 
 export class PruneMessage {
 	public message: MessageEmbed
 
-	constructor(members: Collection<string, GuildMember>, emoji: GuildEmoji) {
+	constructor(members: Collection<string, GuildMember>) {
 		this.message = new MessageEmbed();
 
 		this.message.title = `Usuarios expulsados`;

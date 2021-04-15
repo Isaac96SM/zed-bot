@@ -23,14 +23,13 @@ export async function pruneUsers(this: Bot) {
         const membersToKick = members.filter(m => m.roles.cache.size === 1);
 
         if (membersToKick.size > 0) {
-            const emoji = this.client.emojis.cache.find(e => e.name === "contempt");
-            const message = new PruneMessage(membersToKick, emoji);
+            const message = new PruneMessage(membersToKick);
 
             const zedChannel = await this.client.channels.fetch(getTextChannel('zed').id) as TextChannel;
 
             await Promise.all(membersToKick.map(m => m.kick()));
 
-            zedChannel.send({ embed: message.message });
+            await zedChannel.send({ embed: message.message });
         }
 
         this.lastExecution = now;
