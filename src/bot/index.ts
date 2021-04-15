@@ -7,7 +7,7 @@ import { pruneUsers } from "./jobs"
 export default class Bot {
 	public client: Client
     private key: string
-    
+
     public lastExecution: Date = null;
 
 	constructor(key: string) {

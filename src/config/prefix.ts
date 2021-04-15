@@ -1,1 +1,1 @@
-export const PREFIX: string = '-';
+export const PREFIX: string = '!';

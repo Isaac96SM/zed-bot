@@ -10,7 +10,7 @@ export async function pruneUsers(this: Bot) {
     const now = new Date();
 
     // Is not Saturday or already executed today
-    if (now.getDay() !== 6 || !!this.lastExecution)
+	if (now.getDay() !== 4 || (this.lastExecution && now.toDateString() === this.lastExecution.toDateString()))
         return console.log("No execute");
 
     try {
@@ -23,7 +23,7 @@ export async function pruneUsers(this: Bot) {
         const membersToKick = members.filter(m => m.roles.cache.size === 1);
 
         if (membersToKick.size > 0) {
-            const emoji = this.client.emojis.cache.find(emoji => emoji.name === "contempt");
+            const emoji = this.client.emojis.cache.find(e => e.name === "contempt");
             const message = new PruneMessage(membersToKick, emoji);
 
             const zedChannel = await this.client.channels.fetch(getTextChannel('zed').id) as TextChannel;
@@ -34,7 +34,7 @@ export async function pruneUsers(this: Bot) {
         }
 
         this.lastExecution = now;
-        
+
         console.log(`Finish prune at ${this.lastExecution}. users pruned: ${membersToKick.size}`);
 
     } catch (err) {

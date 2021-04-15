@@ -7,24 +7,24 @@ export const help = (message: Message) => {
 		new MessageEmbed()
 			.setTitle('MUTE')
 			.setColor(0xCF40FA)
-			.setDescription('Mute all the users in the voice channel where you are (self-included)')
-			.addField('Syntax', '-mute'),
+			.setDescription('Mutea a todos los usuario del canal donde estás (tu incluido).')
+			.addField('Uso', '!mute'),
 		new MessageEmbed()
 			.setTitle('UNMUTE')
 			.setColor(0xCF40FA)
-			.setDescription('Unmute all the users in the voice channel where you are (self-included)')
-			.addField('Syntax', '-unmute'),
+			.setDescription('Desmutea a todos los usuario del canal donde estás (tu incluido).')
+			.addField('Uso', '!unmute'),
 		new MessageEmbed()
 			.setTitle('MOVE')
 			.setColor(0xCF40FA)
-			.setDescription('Move all the users in the voice channel where you are (self-included) to the voice channel specified')
-			.addField('Syntax', '-move [to]')
+			.setDescription('Mueve todos los usuarios del canal donde estás (tu incluido) al canal especificado.')
+			.addField('Uso', '!move [to]')
 			.addField('to', Channels.filter(c => c.type === 'voice')
 				.map(c => `${c.name} -> ${c.label}`)
 				.join('\n')
 			)
 	];
 
-	message.channel.send('Available commands');
+	message.channel.send('Comandos disponibles');
 	commands.forEach(c => message.channel.send({ embed: c }));
 }

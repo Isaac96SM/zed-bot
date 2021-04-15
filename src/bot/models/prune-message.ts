@@ -6,9 +6,8 @@ export class PruneMessage {
 	constructor(members: Collection<string, GuildMember>, emoji: GuildEmoji) {
 		this.message = new MessageEmbed();
 
-		this.message.title = `${emoji} CONTEMPT FOR THE WEAK ${emoji}`;
-		this.message.description = 'The following users have been kicked from the server for membership reasons:';
-		this.message.url = 'https://euw.leagueoflegends.com/es-es/champions/zed/';
+		this.message.title = `Usuarios expulsados`;
+		this.message.description = 'Los siguientes usuarios han sido expulsados del servidor por falta de membresía:';
 		this.message.color = 15746887;
 
 		members.forEach(m => this.addMember.bind(this)(m));
@@ -17,7 +16,7 @@ export class PruneMessage {
 	private addMember(member: GuildMember) {
 		const hasAlias = PruneMessage.hasAlias(member);
 
-		this.message.addField('User', member.user.username, hasAlias);
+		this.message.addField('Usuario', member.user.username, hasAlias);
 
 		if (hasAlias)
 			this.message.addField('Alias', member.nickname, true);

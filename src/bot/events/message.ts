@@ -24,7 +24,7 @@ export const onMessage = (message: Message) => {
 			Commands.help(message);
 			break;
 		default:
-			message.channel.send('Unknown command');
+			message.channel.send('Comando desconocido.');
 			break;
 	}
 }

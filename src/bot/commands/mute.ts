@@ -4,12 +4,12 @@ import { isUserInVoice, hasPermission } from "../functions"
 
 export const mute = (message: Message) => {
 	if (!isUserInVoice(message.member)) {
-		message.channel.send('You are not connected to any voice channel');
+		message.channel.send('No estás conectado a ningún canal de voz.');
 		return;
 	}
 
 	if (!hasPermission(message.member)) {
-		message.channel.send('You are not allowed to use this command');
+		message.channel.send('No tienes permisos para hacer esta acción.');
 		return;
 	}
 

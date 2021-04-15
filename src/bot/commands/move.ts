@@ -4,26 +4,26 @@ import { isUserInVoice, hasPermission, getVoiceChannel } from "../functions"
 
 export const move = async (message: Message, destination: string) => {
 	if (!isUserInVoice(message.member)) {
-		message.channel.send('You are not connected to any voice channel');
+		message.channel.send('No estás conectado a ningún canal de voz.');
 		return;
 	}
 
 	if (!hasPermission(message.member)) {
-		message.channel.send('You are not allowed to use this command');
+		message.channel.send('No tienes permisos para hacer esta acción.');
 		return;
 	}
 
 	const destinationChannel = getVoiceChannel(destination);
 
 	if (!destinationChannel) {
-		message.channel.send('Unknown channel');
+		message.channel.send('Canal desconocido.');
 		return;
 	}
 
 	const currentChannel = message.member.voice.channel;
 
 	if (currentChannel.id === destinationChannel.id) {
-		message.channel.send('You are already joined to the channel');
+		message.channel.send('Ya estás en este canal.');
 		return;
 	}
 
@@ -31,5 +31,5 @@ export const move = async (message: Message, destination: string) => {
 
 	currentChannel.members.forEach(member => member.voice.setChannel(newChannel));
 
-	message.channel.send(`Moved to ${(newChannel as VoiceChannel).name}`);
+	message.channel.send(`Movido a ${(newChannel as VoiceChannel).name}.`);
 }
