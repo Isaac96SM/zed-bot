@@ -16,34 +16,20 @@ export async function pruneUsers(this: Bot) {
     try {
         console.log("Start prune");
 
-		console.log("0");
-
-		const server = await this.client.guilds.cache.get(SERVER_ID);
-		
-		console.log("1");
+		const server = await this.client.guilds.fetch(SERVER_ID);
 
 		const members = await server.members.fetch();
-		
-		console.log("2");
 
         const membersToKick = members.filter(m => m.roles.cache.size === 1);
 
         if (membersToKick.size > 0) {
 			const message = new PruneMessage(membersToKick);
-			
-			console.log("3");
 
 			const zedChannel = await this.client.channels.fetch(getTextChannel('zed').id) as TextChannel;
-			
-			console.log("4");
 
 			await Promise.all(membersToKick.map(m => m.kick()));
-			
-			console.log("5");
 
 			await zedChannel.send({ embed: message.message });
-			
-			console.log("6");
         }
 
         this.lastExecution = now;
