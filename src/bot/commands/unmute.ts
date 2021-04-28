@@ -1,4 +1,4 @@
-import { Message } from "discord.js"
+import { Message, Role } from "discord.js"
 
 import { isUserInVoice, hasPermission } from "../functions"
 
@@ -14,7 +14,15 @@ export const unMute = (message: Message) => {
 	}
 
 	const channel = message.member.voice.channel;
-	channel.members.forEach(member => member.voice.setMute(false));
+	const roles: Role[] = message.mentions.roles.array();
+
+	if (roles.length > 0) {
+		channel.members
+			.filter(member => roles.some(role => member.roles.cache.has(role.id)))
+			.forEach(member => member.voice.setMute(false));
+	} else {
+		channel.members.forEach(member => member.voice.setMute(false));
+	}
 
 	message.channel.send('A hablar se ha dicho');
 }

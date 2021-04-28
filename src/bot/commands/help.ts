@@ -7,13 +7,15 @@ export const help = (message: Message) => {
 		new MessageEmbed()
 			.setTitle('MUTE')
 			.setColor(0xCF40FA)
-			.setDescription('Mutea a todos los usuario del canal donde estás (tu incluido).')
-			.addField('Uso', '!mute'),
+			.setDescription('Mutea a todos los usuarios del canal donde estás.')
+			.addField('Uso', '!mute [role]')
+			.addField('role (mención)', 'Solo aplica a los usuarios que pertenecen a dicho rol (puede usarse múltiples veces)'),
 		new MessageEmbed()
 			.setTitle('UNMUTE')
 			.setColor(0xCF40FA)
-			.setDescription('Desmutea a todos los usuario del canal donde estás (tu incluido).')
-			.addField('Uso', '!unmute'),
+			.setDescription('Desmutea a todos los usuarios del canal donde estás (tu incluido).')
+			.addField('Uso', '!unmute [role]')
+			.addField('role (mención)', 'Solo aplica a los usuarios que pertenecen a dicho rol (puede usarse múltiples veces)'),
 		new MessageEmbed()
 			.setTitle('MOVE')
 			.setColor(0xCF40FA)
