@@ -7,7 +7,7 @@ export class PruneMessage {
 		this.message = new MessageEmbed();
 
 		this.message.title = `Usuarios expulsados`;
-		this.message.description = 'Los siguientes usuarios han sido expulsados del servidor por falta de membresía:';
+		this.message.description = 'Los siguientes usuarios han sido expulsados del servidor por jugar Yasuo:';
 		this.message.color = 15746887;
 
 		members.forEach(m => this.addMember.bind(this)(m));
