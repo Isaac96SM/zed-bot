@@ -1,7 +1,7 @@
 import { Client } from "discord.js"
 
 import { JobInterval } from "./constants"
-import { onMessage } from "./events"
+import { onMessage, onReact } from "./events"
 import { pruneUsers } from "./jobs"
 
 export default class Bot {
@@ -11,19 +11,20 @@ export default class Bot {
     public lastExecution: Date = null;
 
 	constructor(key: string) {
-		this.client = new Client();
+		this.client = new Client({ partials: ['USER', 'REACTION', 'MESSAGE'] });
 		this.key = key;
 	}
 
 	start() {
-		this.initEvents();
-
 		this.login();
+		this.initEvents();
 	}
 
 	private initEvents() {
-		this.client.on("message", onMessage);
-		this.client.setInterval(pruneUsers.bind(this), JobInterval);
+		this.client
+			.on("messageReactionAdd", onReact.bind(this))
+			.on("message", onMessage)
+			.setInterval(pruneUsers.bind(this), JobInterval);
 	}
 
 	private login() {
