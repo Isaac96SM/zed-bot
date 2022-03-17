@@ -48,5 +48,11 @@ export const Channels: Channel[] = [
 		name: "zed",
 		label: "zed-bot",
 		type: "text"
+	},
+	{
+		id: "948632039014416384",
+		name: "fdf",
+		label: "feed-for-win",
+		type: "text"
 	}
 ]
