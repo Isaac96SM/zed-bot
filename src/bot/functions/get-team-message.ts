@@ -6,7 +6,7 @@ export const getTeamMessage = (match: Match) => {
   const message = new MessageEmbed();
 
   message.title = match.team.name;
-  message.url = `https://circuitotormenta.com/team/${match.team.name}`;
+  message.url = `https://circuitotormenta.com/team/${match.team.link}`;
   message.description = format(new Date(match.date), "dd/MM/yyyy");
   message.color = 15746887;
   message.footer = {

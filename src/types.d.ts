@@ -14,6 +14,7 @@ export type Player = {
 
 export type Team = {
   name: string;
+  link: string;
   players: Player[];
 };
 
