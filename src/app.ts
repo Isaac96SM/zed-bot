@@ -17,6 +17,13 @@ var app = express();
 app.use(bodyParser.json())
 app.use(cors());
 
+const path = __dirname + '/views/';
+app.use(express.static(path));
+
+app.get("/", (req, res) => {
+  res.sendFile(path + "index.html");
+ });
+
 app.post('/team', async (req: CustomRequest<Match>, res) => {
   const FDFChannel = (await bot.client.channels.fetch(getTextChannel('fdf').id)) as TextChannel;
 
