@@ -18,7 +18,6 @@ app.use(bodyParser.json())
 app.use(cors());
 
 app.post('/team', async (req: CustomRequest<Match>, res) => {
-  console.log(req.body);
   const FDFChannel = (await bot.client.channels.fetch(getTextChannel('fdf').id)) as TextChannel;
 
   const embed = getTeamMessage(req.body);
@@ -28,4 +27,4 @@ app.post('/team', async (req: CustomRequest<Match>, res) => {
   res.send(200);
 });
 
-app.listen(8080, () => console.log('express running'));
+app.listen(process.env.PORT || 8080, () => console.log('express running'));
