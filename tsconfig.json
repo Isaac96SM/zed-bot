@@ -7,5 +7,6 @@
     "sourceMap": true,
     "outDir": "dist"
   },
+  "exclude": ["./src/client"],
   "lib": ["es2015"]
 }

@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  background-color: rgb(54, 57, 63);
+}
+
+header {
+  background-color: rgb(47, 49, 54);
+  border-bottom: 1px solid black;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(47, 49, 54);
+  border-top: 1px solid black;
+}
