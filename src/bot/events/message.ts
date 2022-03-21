@@ -23,6 +23,9 @@ export const onMessage = (message: Message) => {
 		case Command.Help:
 			Commands.help(message);
 			break;
+		case Command.Team:
+			Commands.team(message, args[0]);
+			break;
 		default:
 			message.channel.send('Comando desconocido.');
 			break;

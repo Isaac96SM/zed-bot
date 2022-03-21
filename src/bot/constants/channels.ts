@@ -51,7 +51,7 @@ export const Channels: Channel[] = [
 	},
 	{
 		id: "948632039014416384",
-		name: "fdf",
+		name: "ffw",
 		label: "feed-for-win",
 		type: "text"
 	}

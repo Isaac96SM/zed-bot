@@ -20,5 +20,5 @@ export type Team = {
 
 export type Match = {
   team: Team;
-  date: Date;
+  date?: Date;
 };

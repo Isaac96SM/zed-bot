@@ -25,11 +25,11 @@ app.get("/", (req, res) => {
  });
 
 app.post('/team', async (req: CustomRequest<Match>, res) => {
-  const FDFChannel = (await bot.client.channels.fetch(getTextChannel('fdf').id)) as TextChannel;
+  const FFWChannel = (await bot.client.channels.fetch(getTextChannel('ffw').id)) as TextChannel;
 
   const embed = getTeamMessage(req.body);
 
-  await FDFChannel.send({ embed: embed });
+  await FFWChannel.send({ embed: embed });
 
   res.send(200);
 });
