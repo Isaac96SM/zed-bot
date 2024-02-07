@@ -9,7 +9,7 @@ import { PruneMessage } from "../models"
 export async function pruneUsers(this: Bot) {
     const now = new Date();
 
-    // Is not Saturday or already executed today
+    // Is not Thursday or already executed today
 	if (now.getDay() !== 4 || (this.lastExecution && now.toDateString() === this.lastExecution.toDateString()))
         return console.log("No execute");
 
