@@ -24,7 +24,9 @@ const Form: FC = () => {
   const submit = async () => {
     setSending(true);
 
-    await sendMatch(form);
+    const result = await sendMatch(form);
+
+    console.log(result);
 
     setSending(false);
   }
@@ -92,7 +94,7 @@ const Form: FC = () => {
               />
               <Button
                 color="error"
-                disabled={form.team.players.length === 5}
+                disabled={form.team.players.length === 1}
                 onClick={() => actions.deletePlayer(idx)}
                 startIcon={<DeleteIcon />}
                 variant="outlined"
