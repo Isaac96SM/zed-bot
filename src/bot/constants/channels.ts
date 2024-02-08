@@ -15,6 +15,12 @@ export const Channels: Channel[] = [
 	},
 	{
 		id: "659862160893018112",
+		name: "sea",
+		label: "Sea of Thieves",
+		type: "voice"
+	},
+	{
+		id: "659862160893018112",
 		name: "gr",
 		label: "Game Room",
 		type: "voice"
@@ -38,6 +44,12 @@ export const Channels: Channel[] = [
 		type: "voice"
 	},
 	{
+		id: "927652087460950037",
+		name: "var",
+		label: "No to Racism",
+		type: "voice"
+	},
+	{
 		id: "385850333068525578",
 		name: "afk",
 		label: "AFK",
@@ -49,10 +61,4 @@ export const Channels: Channel[] = [
 		label: "zed-bot",
 		type: "text"
 	},
-	{
-		id: "948632039014416384",
-		name: "ffw",
-		label: "feed-for-win",
-		type: "text"
-	}
 ]
